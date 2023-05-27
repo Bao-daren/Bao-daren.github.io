@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pdf预览</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            flex-direction: column;
+            height: 100vh;
+        }
+        iframe {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="ifr1" src="about:blank" frameborder="0"></iframe>
+</body>
+<script>
+    var src = `../20200309波士顿资质.pdf`
+    document.getElementById('ifr1').src = src
+</script>
+</html>
