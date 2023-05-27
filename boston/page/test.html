@@ -1,27 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pdf预览</title>
-    <style>
-        body {
-            display: flex;
-            margin: 0;
-            flex-direction: column;
-            height: 100vh;
-        }
-        iframe {
-            flex: 1;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+	</script>
+
+<link rel="stylesheet" href="css/pdfh5.css" />
+
+
 </head>
+
 <body>
-    <iframe id="ifr1" src="about:blank" frameborder="0"></iframe>
+
+	<div id="app">
+        {{name}}	<!-- 差值表达式，输出vue中的数据 -->
+    </div>
+
+	<div id="demo"></div>
+
 </body>
-<script>
-    var src = `../20200309波士顿资质.pdf`
-    document.getElementById('ifr1').src = src
-</script>
+
 </html>
+<script src="js/pdf.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/pdf.worker.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery-3.6.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/pdfh5.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+<script>
+
+let vue = new Vue({
+        el:"#app",	//绑定挂载点
+        data:{
+            name:"关羽"	//声明属性（数据）
+        }
+            });
+
+			var pdfh5 = new Pdfh5('#demo', {
+  pdfurl: "../20200309波士顿资质.pdf"
+});
+
+</script>
+
+
+<!-- <script>
+import Pdfh5 from "pdfh5";
+let vue = new Vue({
+        el:"#app",	//绑定挂载点
+        data:{
+            name:"关羽"	//声明属性（数据）
+        }
+            });
+
+	let aa = new Vue({
+		el:"#demo",
+	  
+	  mounted() {
+		  //实例化
+		this.pdfh5 = new Pdfh5("#demo", {
+		  pdfurl: "../20200309波士顿资质.pdf"
+		});
+		//监听完成事件
+		this.pdfh5.on("complete", function (status, msg, time) {
+		  console.log("状态：" + status + "，信息：" + msg + "，耗时：" + time + "毫秒，总页数：" + this.totalNum)
+		})
+	  }
+	})
+  </script>
+  
+  <style>
+	  *{
+	  padding: 0;
+	  margin: 0;
+	  }
+	  html,body,#app {
+	  width: 100%;
+	  height: 100%;
+	  }
+  </style> -->
