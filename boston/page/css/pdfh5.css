@@ -69,10 +69,12 @@
 }
 
 .pdfjs .pageNum-bg {
+    display: none;
     background: rgba(0, 0, 0, 0.5);
 }
 
 .pdfjs .pageNum-num {
+    display: none;
     position: relative;
 }
 
